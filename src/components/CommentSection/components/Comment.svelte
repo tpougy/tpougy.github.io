@@ -14,7 +14,7 @@
 <div
   class="my-4"
   class:pl-4={isChild}
-  class:border-l-2={isChild}
+  class:border-l-2={isChild} class="border border-black/15 rounded-lg"
   class:border-color-gray-200={isChild}
   class:cusdis-indicator={showIndicator}
 >
