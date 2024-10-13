@@ -1,13 +1,17 @@
 ---
+import Widget from "./CommentSection/Widget.svelte";
+
 type Props = {
   pageId: string;
   pageUrl: string;
   pageTitle: string;
 };
 const { pageId, pageUrl, pageTitle } = Astro.props;
+
+// abaixo está a versão jsdk já pronta do widget mas queremos usar o widget svelte diretamente para ter controle sobre o stilo dos elementos
 ---
 
-<div
+<!-- <div
   id="cusdis_thread"
   data-host="https://cusdis.com"
   data-app-id="63fc45f6-55c7-48fa-8483-2f440928cf1b"
@@ -17,4 +21,13 @@ const { pageId, pageUrl, pageTitle } = Astro.props;
 >
 </div>
 <script defer src="https://cusdis.com/js/widget/lang/pt-br.js"></script>
-<script defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<script defer src="https://cusdis.com/js/cusdis.es.js"></script> -->
+<Widget
+  client:only="svelte"
+  attrs={{
+    theme: "dark",
+    appId: "63fc45f6-55c7-48fa-8483-2f440928cf1b",
+    pageId: pageId,
+  }}
+/>
+<p>TESTE</p>
