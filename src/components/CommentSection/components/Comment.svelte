@@ -46,7 +46,7 @@
 
   <div>
     <button
-      class="font-medium text-sm text-gray-500 dark:bg-transparent dark:text-gray-100"
+      class="font-medium text-sm text-gray-500 dark:bg-transparent dark:text-gray-100 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
       type="button"
       on:click={(_) => {
         showReplyForm = !showReplyForm
