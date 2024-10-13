@@ -7,7 +7,7 @@
   import { t } from './i18n'
 
   export let attrs
-  export let commentsResult
+  export let commentsResult = { data: [], pageCount: 0 }
 
   let page = 1
 
@@ -21,6 +21,7 @@
 
   const api = axios.create({
     baseURL: attrs.host,
+    baseURL: attrs.host || 'https://cusdis.com',
   })
 
   function setMessage(msg) {
