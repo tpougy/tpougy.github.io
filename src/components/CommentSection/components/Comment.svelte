@@ -30,11 +30,11 @@
     {/if}
   </div>
 
-  <div class="text-gray-500 text-sm dark:text-gray-400">
+  <div class="text-black/50 text-sm dark:text-gray-400">
     {comment.parsedCreatedAt}
   </div>
 
-  <div class="text-gray-500 my-2 dark:text-gray-200">
+  <div class="text-black my-2 dark:text-gray-200">
     {@html comment.parsedContent}
   </div>
 
