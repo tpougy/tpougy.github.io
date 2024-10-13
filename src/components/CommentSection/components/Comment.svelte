@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class="my-4 border border-black/15 rounded-lg"
+  class="my-4"
   class:pl-4={isChild}
   class:border-l-2={isChild}
   class:border-color-gray-200={isChild}
