@@ -17,7 +17,7 @@
 
   let error
 
-  let theme = attrs.theme || 'light'
+  let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
 
   const api = axios.create({
     baseURL: attrs.host,
