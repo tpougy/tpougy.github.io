@@ -94,7 +94,7 @@
   <div class="px-1">
     <button
 
-      class="text-sm bg-gray-200 p-2 px-4 font-bold dark:bg-transparent dark:border dark:border-gray-100 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:hover:bg-white/5 dark:hover:text-white"
+      class="text-sm bg-gray-200 p-2 px-4 font-bold border border-black/15 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
       class:cusdis-disabled={loading}
       on:click={addComment}>{loading ? t('sending') : t('post_comment')}</button
     >
