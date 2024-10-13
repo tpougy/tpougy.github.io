@@ -63,7 +63,7 @@
       <label class="mb-2 block" for="nickname">{t('nickname')}</label>
       <input
         name="nickname"
-        class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-black/15 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+        class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-gray-300 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-gray-600 dark:hover:bg-white/5 dark:hover:text-white"
         type="text"
         title={t('nickname')}
         bind:value={nickname}
@@ -73,7 +73,7 @@
       <label class="mb-2 block" for="email">{t('email')}</label>
       <input
         name="email"
-        class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-black/15 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+        class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-gray-300 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-gray-600 dark:hover:bg-white/5 dark:hover:text-white"
         type="email"
         title={t('email')}
         bind:value={email}
@@ -85,7 +85,7 @@
     <label class="mb-2 block" for="reply_content">{t('reply_placeholder')}</label>
     <textarea
       name="reply_content"
-      class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-black/15 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+      class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-gray-300 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-gray-600 dark:hover:bg-white/5 dark:hover:text-white"
       title={t('reply_placeholder')}
       bind:value={content}
     />
