@@ -60,20 +60,20 @@
 <div class="grid grid-cols-1 gap-4">
   <div class="grid grid-cols-2 gap-4">
     <div class="px-1">
-      <label class="mb-2 block text-black dark:text-gray-200" for="nickname">{t('nickname')}</label>
+      <label class="mb-2 block" for="nickname">{t('nickname')}</label>
       <input
         name="nickname"
-        class="w-full p-2 border border-black/15 rounded-lg bg-transparent dark:text-gray-100 dark:outline-none"
+        class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-black/15 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
         type="text"
         title={t('nickname')}
         bind:value={nickname}
       />
     </div>
     <div class="px-1">
-      <label class="mb-2 block text-black dark:text-gray-200" for="email">{t('email')}</label>
+      <label class="mb-2 block" for="email">{t('email')}</label>
       <input
         name="email"
-        class="w-full p-2 border border-black/15 rounded-lg bg-transparent dark:text-gray-100 dark:outline-none"
+        class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-black/15 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
         type="email"
         title={t('email')}
         bind:value={email}
@@ -82,10 +82,10 @@
   </div>
 
   <div class="px-1">
-    <label class="mb-2 block text-black dark:text-gray-200" for="reply_content">{t('reply_placeholder')}</label>
+    <label class="mb-2 block" for="reply_content">{t('reply_placeholder')}</label>
     <textarea
       name="reply_content"
-      class="w-full p-2 border border-black/15 rounded-lg h-24 bg-transparent dark:text-gray-100 dark:outline-none"
+      class="w-full p-2 text-sm bg-gray-200 px-4 font-bold border border-black/15 rounded-lg transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
       title={t('reply_placeholder')}
       bind:value={content}
     />
