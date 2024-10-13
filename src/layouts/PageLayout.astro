@@ -1,19 +1,26 @@
 ---
+import Footer from "@components/Footer.astro";
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
 import { SITE } from "@consts";
 
 type Props = {
   title: string;
   description: string;
+  enableComments: boolean;
 };
 
-const { title, description } = Astro.props;
+const { title, description, enableComments } = Astro.props;
+
+import { getLangFromUrl } from "../i18n/utils.ts";
+
+const url = Astro.url;
+const id = Astro.url.pathname;
+const lang = getLangFromUrl(url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <Head title={`${title} | ${SITE.NAME}`} description={description} />
   </head>
@@ -22,6 +29,11 @@ const { title, description } = Astro.props;
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer
+      enableComments={enableComments}
+      pageTitle={title}
+      pageUrl={url.toString()}
+      pageId={id}
+    />
   </body>
 </html>

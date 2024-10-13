@@ -6,7 +6,8 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.coerce.date(),
-    draft: z.boolean().optional()
+    lang: z.string(),
+    draft: z.boolean().optional(),
   }),
 });
 
@@ -28,7 +29,7 @@ const projects = defineCollection({
     date: z.coerce.date(),
     draft: z.boolean().optional(),
     demoURL: z.string().optional(),
-    repoURL: z.string().optional()
+    repoURL: z.string().optional(),
   }),
 });
 

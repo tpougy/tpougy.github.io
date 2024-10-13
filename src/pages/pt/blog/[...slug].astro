@@ -1,0 +1,66 @@
+---
+import BackToPrev from "@components/BackToPrev.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { getLangFromUrl } from "@i18n/utils";
+import PageLayout from "@layouts/PageLayout.astro";
+import { readingTime } from "@lib/utils";
+import { type CollectionEntry, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("blog");
+
+  const paths = pages.map((page) => {
+    // Extrai o idioma e o slug a partir do caminho da coleção
+    const pathParts = page.id.split("/"); // Divide o caminho do arquivo
+    const lang = pathParts[0]; // Obtém o idioma da pasta (e.g., "pt" ou "en")
+    const slug = pathParts[1]; // Obtém o slug da pasta do post (e.g., "01-post-abc")
+
+    return {
+      params: { lang, slug }, // Passa o idioma e o slug como parâmetros
+      props: page,
+    };
+  });
+  return paths;
+}
+
+const url = Astro.url;
+const lang = getLangFromUrl(url); // Detecta o idioma da URL
+const page = Astro.props;
+
+const post = Astro.props;
+type Props = CollectionEntry<"blog">;
+
+const { Content } = await page.render();
+---
+
+<PageLayout
+  enableComments={true}
+  title={post.data.title}
+  description={post.data.description}
+>
+  <Container>
+    <div class="animate">
+      <BackToPrev href=`/${lang}/blog`> Back to blog </BackToPrev>
+    </div>
+    <div class="my-10 space-y-1">
+      <div class="animate flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          <FormattedDate date={post.data.date} />
+        </div>
+        &bull;
+        <div class="font-base text-sm">
+          {readingTime(post.body)}
+        </div>
+      </div>
+      <div
+        class="animate font-serif text-2xl font-semibold text-black dark:text-white"
+      >
+        {post.data.title}
+      </div>
+    </div>
+    <article class="animate">
+      <Content />
+    </article>
+  </Container>
+</PageLayout>
