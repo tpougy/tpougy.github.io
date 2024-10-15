@@ -76,6 +76,16 @@
       {t('comments.content.reply_btn')}
     </div>
   </button>
+
+  {#if showReplyForm}
+    <div class="mt-4 pl-4 border-l-2 border-gray-200">
+      <Post
+        parentId={comment.id}
+        onSuccess={() => (showReplyForm = false)}
+        lang={lang}
+      />
+    </div>
+  {/if}
 </div>
 
 {#if showReplyForm}
