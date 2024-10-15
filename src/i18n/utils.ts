@@ -1,6 +1,6 @@
-import { ui, defaultLang, showDefaultLang, languages } from "./ui";
+import { ui, defaultLang, languages } from "./ui";
 
-export function getLangFromUrl(url: URL) {
+export function getLangFromUrl(url: URL): keyof typeof languages {
   const pathParts = url.pathname.split("/");
   const lang = pathParts[1]; // o idioma é a primeira parte após a raiz ("/")
 
@@ -32,7 +32,7 @@ export function getPureSlug(slug: string) {
   return pure;
 }
 
-export function useTranslations(lang: keyof typeof ui) {
+export function useTranslations(lang: keyof typeof languages) {
   return function t(key: keyof (typeof ui)[typeof defaultLang]) {
     return ui[lang][key] || ui[defaultLang][key];
   };
