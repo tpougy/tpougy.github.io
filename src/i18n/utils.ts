@@ -2,7 +2,7 @@ import { ui, defaultLang, languages } from "./ui";
 
 export function getLangFromUrl(url: URL): keyof typeof languages {
   const pathParts = url.pathname.split("/");
-  const lang = pathParts[1]; // o idioma é a primeira parte após a raiz ("/")
+  const lang = pathParts[1] as keyof typeof languages; // o idioma é a primeira parte após a raiz ("/")
 
   // Verifique se o idioma é válido (ajuste conforme seus idiomas suportados)
   const supportedLangs = Object.keys(languages);
