@@ -3,7 +3,10 @@
   import axios from 'redaxios';
   import Content from './Content.svelte';
   import Post from './Post.svelte';
-  import { t } from './lang/i18n';
+  import { useTranslations } from '../../i18n/utils';
+
+  const lang = 'pt'; // ou obtenha o idioma de outra forma, se necessário
+  const t = useTranslations(lang);
 
   export let attrs;
   export let commentsResult = { data: [], pageCount: 0 };

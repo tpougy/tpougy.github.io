@@ -1,6 +1,9 @@
 <script>
   import { getContext } from 'svelte';
-  import { t } from './lang/i18n';
+  import { useTranslations } from '../../i18n/utils';
+
+  const lang = 'pt'; // ou obtenha o idioma de outra forma, se necessário
+  const t = useTranslations(lang);
   import Post from './Post.svelte';
 
   export let comment;
