@@ -3,7 +3,7 @@
   import axios from 'redaxios';
   import Content from './Content.svelte';
   import Post from './Post.svelte';
-  import { useTranslations } from '../../i18n/utils';
+  import { useTranslations } from '../../i18n/utils.ts';
 
   const lang = 'pt'; // ou obtenha o idioma de outra forma, se necessário
   const t = useTranslations(lang);
