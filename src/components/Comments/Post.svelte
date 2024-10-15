@@ -2,9 +2,7 @@
   import { getContext } from 'svelte';
   import { useTranslations } from '../../i18n/utils.ts';
 
-  const lang = 'pt'; // ou obtenha o idioma de outra forma, se necessário
-  const t = useTranslations(lang);
-
+  export let lang;
   export let parentId;
   export let onSuccess;
 
@@ -13,6 +11,7 @@
   let email = '';
   let loading = false;
 
+  const t = useTranslations(lang);
   const api = getContext('api');
   const setMessage = getContext('setMessage');
   const { appId, pageId, pageUrl, pageTitle } = getContext('attrs');

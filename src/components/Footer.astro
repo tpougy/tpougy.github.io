@@ -2,7 +2,7 @@
 import BackToTop from "@components/BackToTop.astro";
 import Container from "@components/Container.astro";
 import { SITE } from "@consts";
-import Comments from "./Comments.astro";
+import Comments from "./CommentSection.astro";
 import LanguagePicker from "./LanguagePicker.astro";
 
 type Props = {
@@ -25,12 +25,13 @@ const { enableComments = false, pageId, pageUrl, pageTitle } = Astro.props;
 
     {
       enableComments && (
-        <div class="animate font-serif text-2xl font-semibold text-black dark:text-white">
-          Comentários
-        </div>
-        <div class="mb-10 mt-10">
-          
-          <Comments pageTitle={pageTitle} pageId={pageId} pageUrl={pageUrl} />
+        <div>
+          <div class="animate font-serif text-2xl font-semibold text-black dark:text-white">
+            Comentários
+          </div>
+          <div class="mb-10 mt-10">
+            <Comments pageTitle={pageTitle} pageId={pageId} pageUrl={pageUrl} />
+          </div>
         </div>
       )
     }

@@ -18,7 +18,8 @@ export const ui = {
     "comments.content.mod_badge": "MOD",
     "comments.content.reply_btn": "Reply",
 
-    "comments.post.comment_has_been_sent": "Your comment has been sent. Please wait for approval.",
+    "comments.post.comment_has_been_sent":
+      "Your comment has been sent. Please wait for approval.",
     "comments.post.content_is_required": "Content is required",
     "comments.post.email": "Email (optional)",
     "comments.post.nickname": "Nickname",
@@ -38,7 +39,8 @@ export const ui = {
     "comments.content.mod_badge": "MOD",
     "comments.content.reply_btn": "Responder",
 
-    "comments.post.comment_has_been_sent": "Seu comentário foi enviado. Por favor aguarde pela aprovação.",
+    "comments.post.comment_has_been_sent":
+      "Seu comentário foi enviado. Por favor aguarde pela aprovação.",
     "comments.post.content_is_required": "Conteúdo é requerido",
     "comments.post.email": "Email (opcional)",
     "comments.post.nickname": "Apelido",
