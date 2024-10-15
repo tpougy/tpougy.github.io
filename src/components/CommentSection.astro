@@ -1,5 +1,8 @@
 ---
 import Section from "./Comments/Section.svelte";
+import { getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
 
 type Props = {
   pageId: string;
@@ -18,5 +21,6 @@ const { pageId, pageUrl, pageTitle } = Astro.props;
     pageId: pageId,
     pageUrl: pageUrl,
     pageTitle: pageTitle,
+    lang={lang}
   }}
 />
