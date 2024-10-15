@@ -1,36 +1,34 @@
 <script>
-  import { getContext } from 'svelte'
-  import { t } from '../i18n'
-  export let parentId
+  import { getContext } from 'svelte';
+  import { t } from '../i18n';
 
-  // form data
-  let content = ''
-  let nickname = ''
-  let email = ''
+  export let parentId;
+  export let onSuccess;
 
-  let loading = false
+  let content = '';
+  let nickname = '';
+  let email = '';
+  let loading = false;
 
-  export let onSuccess
-
-  const api = getContext('api')
-  const setMessage = getContext('setMessage')
-  const { appId, pageId, pageUrl, pageTitle } = getContext('attrs')
-  const refresh = getContext('refresh')
+  const api = getContext('api');
+  const setMessage = getContext('setMessage');
+  const { appId, pageId, pageUrl, pageTitle } = getContext('attrs');
+  const refresh = getContext('refresh');
 
   async function addComment() {
     if (!content) {
-      alert(t('content_is_required'))
-      return
+      alert(t('content_is_required'));
+      return;
     }
 
     if (!nickname) {
-      alert(t('nickname_is_required'))
-      return
+      alert(t('nickname_is_required'));
+      return;
     }
 
     try {
-      loading = true
-      const res = await api.post('/api/open/comments', {
+      loading = true;
+      await api.post('/api/open/comments', {
         appId,
         pageId,
         content,
@@ -39,20 +37,20 @@
         parentId,
         pageUrl,
         pageTitle,
-      })
-      await refresh()
-      teardown()
-      setMessage(t('comment_has_been_sent'))
+      });
+      await refresh();
+      teardown();
+      setMessage(t('comment_has_been_sent'));
     } finally {
-      loading = false
+      loading = false;
     }
   }
 
   function teardown() {
-    content = ''
-    nickname = ''
-    email = ''
-    onSuccess && onSuccess()
+    content = '';
+    nickname = '';
+    email = '';
+    onSuccess && onSuccess();
   }
 
 </script>
