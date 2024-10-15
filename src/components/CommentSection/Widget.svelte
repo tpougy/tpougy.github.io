@@ -93,7 +93,7 @@
 </script>
 
 {#if !error}
-  <div class:dark={theme === 'dark'} class="border border-black/15 rounded-lg">
+  <div class:dark={theme === 'dark'} class="">
     {#if message}
       <div class="p-2 mb-4 bg-blue-500 text-white">
         {message}
@@ -127,7 +127,7 @@
       {/if}
     </div>
 
-    <div class="my-8" />
+    <div class="my-4" />
 
     <div class="text-center text-black/50 dark:text-gray-100 text-xs">
       <a class="underline " href="https://cusdis.com">{t('powered_by')}</a>
