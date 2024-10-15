@@ -20,12 +20,12 @@
 
   async function addComment() {
     if (!content) {
-      alert(t('content_is_required'));
+      alert(t('comments.post.content_is_required'));
       return;
     }
 
     if (!nickname) {
-      alert(t('nickname_is_required'));
+      alert(t('comments.post.nickname_is_required'));
       return;
     }
 
@@ -43,7 +43,7 @@
       });
       await refresh();
       teardown();
-      setMessage(t('comment_has_been_sent'));
+      setMessage(t('comments.post.comment_has_been_sent'));
     } finally {
       loading = false;
     }
@@ -61,7 +61,7 @@
 <div class="grid grid-cols-1 gap-4">
   <div class="grid grid-cols-2 gap-4">
     <div class="px-1">
-      <label class="mb-2 block text-black dark:text-white" for="nickname">{t('nickname')}</label>
+      <label class="mb-2 block text-black dark:text-white" for="nickname">{t('comments.post.nickname')}</label>
       <input
         name="nickname"
         class="w-full p-2 text-sm bg-gray-100 px-4 font-bold border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
@@ -71,7 +71,7 @@
       />
     </div>
     <div class="px-1">
-      <label class="mb-2 block text-black dark:text-white" for="email">{t('email')}</label>
+      <label class="mb-2 block text-black dark:text-white" for="email">{t('comments.post.email')}</label>
       <input
         name="email"
         class="w-full p-2 text-sm bg-gray-100 px-4 font-bold border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
@@ -83,7 +83,7 @@
   </div>
 
   <div class="px-1">
-    <label class="mb-2 block text-black dark:text-white" for="reply_content">{t('reply_placeholder')}</label>
+    <label class="mb-2 block text-black dark:text-white" for="reply_content">{t('comments.post.reply_placeholder')}</label>
     <textarea
       name="reply_content"
       class="w-full p-2 text-sm bg-gray-100 px-4 font-bold border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
@@ -116,7 +116,7 @@
       </svg>
       <!-- Texto do Botão -->
       <div class="font-serif text-sm font-bold">
-        {loading ? t('sending') : t('post_comment')}
+        {loading ? t('comments.post.sending') : t('comments.post.post_comment')}
       </div>
     </button>
   </div>

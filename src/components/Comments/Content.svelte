@@ -28,7 +28,7 @@
 
   {#if comment.moderatorId}
     <div class="mr-2 dark:bg-gray-500 bg-gray-200 text-xs py-0.5 px-1 rounded dark:text-gray-100">
-      <span>{t('mod_badge')}</span>
+      <span>{t('comments.content.mod_badge')}</span>
     </div>
   {/if}
 </div>
@@ -74,7 +74,7 @@
       />
     </svg>
     <div class="font-serif text-sm font-bold">
-      {t('reply_btn')}
+      {t('comments.content.reply_btn')}
     </div>
   </button>
 </div>

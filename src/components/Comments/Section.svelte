@@ -97,7 +97,7 @@
   <div class="mt-4 px-1">
     {#if loadingComments}
       <div class="text-black dark:text-gray-100">
-        {t('loading')}...
+        {t('comments.section.loading')}...
       </div>
     {:else}
       {#each commentsResult.data as comment (comment.id)}
@@ -119,7 +119,7 @@
   <div class="my-4" />
 
   <div class="text-center text-black/50 dark:text-gray-100 text-xs">
-    <a class="underline" href="https://cusdis.com">{t('powered_by')}</a>
+    <a class="underline" href="https://cusdis.com">{t('comments.section.powered_by')}</a>
   </div>
 </div>
 {/if}
