@@ -1,15 +1,14 @@
 <script>
   import { getContext } from 'svelte';
   import { useTranslations } from "../../i18n/utils.ts";
-
-  const lang = 'pt'; // ou obtenha o idioma de outra forma, se necessário
-  const t = useTranslations(lang);
   import Post from './Post.svelte';
 
+  export let lang;
   export let comment;
   export let showReplyForm = false;
   export let isChild = false;
-
+  
+  const t = useTranslations(lang);
   const { showIndicator } = getContext('attrs');
 
 </script>
