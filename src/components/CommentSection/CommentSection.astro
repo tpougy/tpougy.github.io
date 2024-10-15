@@ -1,0 +1,74 @@
+---
+import Comment from './Comment.astro';
+import CommentReply from './CommentReply.astro';
+import { useState, useEffect } from 'react';
+
+const { attrs } = Astro.props;
+const [commentsResult, setCommentsResult] = useState({ data: [], pageCount: 0 });
+const [loadingComments, setLoadingComments] = useState(true);
+const [message, setMessage] = useState('');
+const [error, setError] = useState(null);
+const [page, setPage] = useState(1);
+
+useEffect(() => {
+  async function getComments(p = 1) {
+    setLoadingComments(true);
+    try {
+      const res = await fetch(`${attrs.host || 'https://cusdis.com'}/api/open/comments?page=${p}&appId=${attrs.appId}&pageId=${attrs.pageId}`, {
+        headers: {
+          'x-timezone-offset': -new Date().getTimezoneOffset(),
+        },
+      });
+      const data = await res.json();
+      setCommentsResult(data.data);
+    } catch (e) {
+      setError(e);
+    } finally {
+      setLoadingComments(false);
+    }
+  }
+
+  getComments();
+}, [page]);
+
+function onClickPage(p) {
+  setPage(p);
+}
+
+function setMessage(msg) {
+  setMessage(msg);
+}
+---
+
+{!error ? (
+  <div class={theme === 'dark' ? 'dark' : ''}>
+    {message && <div class="p-2 mb-4 bg-blue-500 text-white">{message}</div>}
+    <CommentReply />
+    <div class="my-8" />
+    <div class="mt-4 px-1">
+      {loadingComments ? (
+        <div class="text-black dark:text-gray-100">{t('loading')}...</div>
+      ) : (
+        commentsResult.data.map(comment => (
+          <Comment comment={comment} firstFloor={true} />
+        ))
+      )}
+      {commentsResult.pageCount > 1 && (
+        <div>
+          {Array.from({ length: commentsResult.pageCount }, (_, index) => (
+            <button
+              class={`px-2 py-1 text-sm mr-2 ${page === index + 1 ? 'underline' : ''}`}
+              onClick={() => onClickPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+    <div class="my-4" />
+    <div class="text-center text-black/50 dark:text-gray-100 text-xs">
+      <a class="underline" href="https://cusdis.com">{t('powered_by')}</a>
+    </div>
+  </div>
+) : null}
