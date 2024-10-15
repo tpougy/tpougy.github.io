@@ -89,7 +89,7 @@
     </div>
   {/if}
 
-  <Post />
+  <Post lang={attrs.lang} />
 
   <div class="my-8" />
 
@@ -100,7 +100,7 @@
       </div>
     {:else}
       {#each commentsResult.data as comment (comment.id)}
-        <Content {comment} firstFloor={true} />
+        <Content {comment} firstFloor={true} lang={attrs.lang} />
       {/each}
       {#if commentsResult.pageCount > 1}
         <div>
