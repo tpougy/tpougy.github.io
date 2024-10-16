@@ -1,0 +1,35 @@
+---
+import ArrowCard from "@components/ArrowCard.astro";
+import Container from "@components/Container.astro";
+import { PROJECTS } from "@consts";
+import { getLangFromUrl } from "@i18n/utils";
+import PageLayout from "@layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+
+const url = Astro.url;
+const lang = getLangFromUrl(url); // Detecta o idioma da URL
+
+// usar o getLangFromSlug e filtar os projetos que tem lang no slug igual ao const lang definido acima
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        Projetos
+      </div>
+      <ul class="animate flex flex-col gap-4">
+        {
+          projects.map((project) => (
+            <li>
+              <ArrowCard entry={project} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</PageLayout>
