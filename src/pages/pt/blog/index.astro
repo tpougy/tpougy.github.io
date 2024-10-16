@@ -11,28 +11,16 @@ const url = Astro.url;
 const lang = getLangFromUrl(url); // Detecta o idioma da URL
 
 // Filtra os posts da coleção de acordo com o idioma
-const data = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-type Acc = {
-  [year: string]: CollectionEntry<"blog">[];
-};
-
-// Agrupa os posts por ano e por idioma
-const posts = data.reduce((acc: Acc, post) => {
-  const year = post.data.date.getFullYear().toString();
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-
-  if (getLangFromSlug(post.slug) == lang) {
-    // Filtra pelo idioma
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft && getLangFromSlug(post.slug) === lang)
+  .reduce((acc: { [year: string]: CollectionEntry<"blog">[] }, post) => {
+    const year = post.data.date.getFullYear().toString();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
     acc[year].push(post);
-  }
-
-  return acc;
-}, {});
+    return acc;
+  }, {});
 
 // Ordena os anos para exibição
 const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
