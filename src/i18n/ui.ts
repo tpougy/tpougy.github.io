@@ -12,6 +12,8 @@ export const ui = {
     "header.work": "work",
     "header.projects": "projects",
 
+    "comments.title": "Comments",
+
     "comments.section.loading": "Loading",
     "comments.section.powered_by": "Comments powered by Cusdis",
 
@@ -32,6 +34,8 @@ export const ui = {
     "header.blog": "blog",
     "header.work": "trabalho",
     "header.projects": "projetos",
+
+    "comments.title": "Comentários",
 
     "comments.section.loading": "Carregando",
     "comments.section.powered_by": "Powered by Cusdis",

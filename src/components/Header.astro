@@ -12,24 +12,24 @@ const t = useTranslations(lang);
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
       <Link href="/" underline={false}>
-        <div class="font-serif font-semibold">
+        <div class="font-serif text-lg font-semibold">
           {SITE.NAME}
         </div>
       </Link>
       <nav class="flex gap-1">
-        <Link href=`blog`>
+        <Link href=`/${lang}/blog/`>
           {t("header.blog")}
         </Link>
         <span>
           {`/`}
         </span>
-        <Link href="work/">
+        <Link href=`/${lang}/work/`>
           {t("header.work")}
         </Link>
         <span>
           {`/`}
         </span>
-        <Link href="projects/">
+        <Link href=`/${lang}/projects/`>
           {t("header.projects")}
         </Link>
       </nav>

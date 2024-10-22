@@ -26,10 +26,7 @@ const { enableComments = false, pageId, pageUrl, pageTitle } = Astro.props;
     {
       enableComments && (
         <div>
-          <div class="animate font-serif text-2xl font-semibold text-black dark:text-white">
-            Comentários
-          </div>
-          <div class="mb-10 mt-10">
+          <div class="mb-10">
             <Comments pageTitle={pageTitle} pageId={pageId} pageUrl={pageUrl} />
           </div>
         </div>

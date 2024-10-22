@@ -1,8 +1,16 @@
-# TPougy Personal Blog
+# tpougy blog
 
-_Based on Astro Nano_
+_Based on [Astro Nano](https://github.com/markhorn-dev/astro-nano)_
 
-My personal blog to share thoughs and ideas.
+My personal blog to share dive deep into programming and tech topics.
+
+## Internationalization (i18n)
+
+Implemented i18n features to support English (en) and Portuguese (pt-BR) dinamically as selected by the user.
+
+## Comment Engine
+
+Using [Cusdis](https://cusdis.com/) as the engine for the comment section on blog posts.
 
 ## 💻 Commands to Run the Dev
 

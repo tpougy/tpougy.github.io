@@ -5,7 +5,6 @@ import Link from "@components/Link.astro";
 import { HOME, SITE, SOCIALS } from "@consts";
 import PageLayout from "@layouts/PageLayout.astro";
 import { dateRange } from "@lib/utils";
-import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import { getLangFromSlug, getLangFromUrl } from "../../i18n/utils";
 
@@ -41,11 +40,7 @@ const work = await Promise.all(
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <h2 class="animate font-semibold text-black dark:text-white">
-      Welcome to my Blog! <Icon
-        name="ph:hand-waving-bold"
-        size="22"
-        class="inline"
-      />
+      Welcome to my Blog!
     </h2>
     <div class="space-y-16">
       <!-- Intro -->
@@ -87,7 +82,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Work Experience
           </h5>
-          <Link href="/work"> See all work </Link>
+          <Link href=`/${lang}/work`> See all work </Link>
         </div>
         <ul class="flex flex-col space-y-4">
           {
@@ -115,7 +110,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Recent projects
           </h5>
-          <Link href="/projects"> See all projects </Link>
+          <Link href=`/${lang}/projects`> See all projects </Link>
         </div>
         <ul class="flex flex-col gap-4">
           {

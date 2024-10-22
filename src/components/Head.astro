@@ -24,19 +24,22 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+
 <link
   rel="icon"
-  type="image/svg+xml"
-  href="/favicon-dark.svg"
-  media="(prefers-color-scheme: dark)"
+  type="image/png"
+  href="/favicon/favicon-48x48.png"
+  sizes="48x48"
 />
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" />
 <link
-  rel="icon"
-  type="image/svg+xml"
-  href="/favicon-light.svg"
-  media="(prefers-color-scheme: light)"
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/favicon/apple-touch-icon.png"
 />
-<link rel="icon" type="image/x-icon" href="/favicon-light.svg" />
+<meta name="apple-mobile-web-app-title" content="tpougy" />
+<link rel="manifest" href="/favicon/site.webmanifest" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
@@ -74,7 +77,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
   document.addEventListener("astro:before-swap", (e) =>
     [
       ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll(
-        'link[as="font"]',
+        "link[as='font']",
       ),
     ].forEach((link) => link.remove()),
   );

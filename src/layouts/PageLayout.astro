@@ -7,10 +7,10 @@ import { SITE } from "@consts";
 type Props = {
   title: string;
   description: string;
-  enableComments: boolean;
+  enableComments?: boolean;
 };
 
-const { title, description, enableComments } = Astro.props;
+const { title, description, enableComments = false } = Astro.props;
 
 import { getLangFromUrl } from "../i18n/utils.ts";
 

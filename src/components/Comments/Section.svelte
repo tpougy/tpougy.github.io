@@ -82,6 +82,7 @@
 </script>
 
 {#if !error}
+
 <div class:dark={theme === 'dark'}>
   {#if message}
     <div class="p-2 mb-4 bg-blue-500 text-white">

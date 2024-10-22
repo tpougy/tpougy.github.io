@@ -1,8 +1,9 @@
 ---
-import { getLangFromUrl } from "../i18n/utils";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import Section from "./Comments/Section.svelte";
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 type Props = {
   pageId: string;
@@ -10,9 +11,13 @@ type Props = {
   pageTitle: string;
 };
 const { pageId, pageUrl, pageTitle } = Astro.props;
-
-// aqui devemos identificar a lang automaticamente e passar como parametro do componente
 ---
+
+<div
+  class="animate mb-10 font-serif text-2xl font-semibold text-black dark:text-white"
+>
+  {t("comments.title")}
+</div>
 
 <Section
   client:only="svelte"
