@@ -3,19 +3,31 @@ import BackToPrev from "@components/BackToPrev.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import Link from "@components/Link.astro";
+import { getLangFromUrl } from "@i18n/utils";
 import PageLayout from "@layouts/PageLayout.astro";
 import { readingTime } from "@lib/utils";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const projects = (await getCollection("projects"))
-    .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: project,
-  }));
+  const pages = await getCollection("projects");
+
+  const paths = pages.map((page) => {
+    // Extrai o idioma e o slug a partir do caminho da coleção
+    const pathParts = page.id.split("/"); // Divide o caminho do arquivo
+    const lang = pathParts[0]; // Obtém o idioma da pasta (e.g., "pt" ou "en")
+    const slug = pathParts[1]; // Obtém o slug da pasta do post (e.g., "01-post-abc")
+
+    return {
+      params: { lang, slug }, // Passa o idioma e o slug como parâmetros
+      props: page,
+    };
+  });
+  return paths;
 }
+
+const url = Astro.url;
+const lang = getLangFromUrl(url); // Detecta o idioma da URL
+
 type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
@@ -25,7 +37,7 @@ const { Content } = await project.render();
 <PageLayout title={project.data.title} description={project.data.description}>
   <Container>
     <div class="animate">
-      <BackToPrev href="/projects"> Back to projects </BackToPrev>
+      <BackToPrev href=`/${lang}/projects`> Back to projects </BackToPrev>
     </div>
     <div class="my-10 space-y-1">
       <div class="animate flex items-center gap-1.5">

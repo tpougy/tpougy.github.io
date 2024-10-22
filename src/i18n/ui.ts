@@ -9,7 +9,6 @@ export const showDefaultLang = true;
 export const ui = {
   en: {
     "header.blog": "blog",
-    "header.work": "work",
     "header.projects": "projects",
 
     "comments.title": "Comments",
@@ -32,7 +31,6 @@ export const ui = {
   },
   pt: {
     "header.blog": "blog",
-    "header.work": "trabalho",
     "header.projects": "projetos",
 
     "comments.title": "Comentários",
