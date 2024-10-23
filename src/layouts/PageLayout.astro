@@ -18,7 +18,12 @@ const url = Astro.url;
 const id = Astro.url.pathname;
 const lang = getLangFromUrl(url);
 const userTheme = localStorage.getItem("theme");
-const darkTheme = userTheme === "dark" || (userTheme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+const darkTheme =
+  userTheme === "dark" ||
+  (userTheme === "system" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ? "dark"
+    : "light";
 ---
 
 <!doctype html>
