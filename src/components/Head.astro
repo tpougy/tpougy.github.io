@@ -1,12 +1,4 @@
 ---
-import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
-import inter600 from "@fontsource/inter/files/inter-latin-600-normal.woff2";
-import "@fontsource/inter/latin-400.css";
-import "@fontsource/inter/latin-600.css";
-import "@fontsource/lora/400.css";
-import "@fontsource/lora/600.css";
-import lora400 from "@fontsource/lora/files/lora-latin-400-normal.woff2";
-import lora600 from "@fontsource/lora/files/lora-latin-600-normal.woff2";
 import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 
@@ -41,12 +33,6 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta name="apple-mobile-web-app-title" content="tpougy" />
 <link rel="manifest" href="/favicon/site.webmanifest" />
 <meta name="generator" content={Astro.generator} />
-
-<!-- Font preloads -->
-<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin />
-<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -170,8 +156,10 @@ const { title, description, image = "/nano.png" } = Astro.props;
 
     if (dark) {
       document.documentElement.classList.add("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.setAttribute("data-theme", "light");
     }
 
     window.getComputedStyle(css).opacity;

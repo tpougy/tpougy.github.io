@@ -1,12 +1,24 @@
 ---
 import { getLangFromUrl, UrlToPathLang } from "@i18n/utils";
-import { languages } from "../i18n/ui";
+import { Icon } from "astro-icon/components";
+import { defaultLang, languages } from "../i18n/ui";
+import Link from "./Link.astro";
 
 const url = Astro.url;
 
-// TODO: corrigir abaixo
 const currentLang = getLangFromUrl(url);
-const otherLang = Object.keys(languages).find((lang) => lang !== currentLang) || defaultLang;
+const otherLang =
+  Object.keys(languages).find((lang) => lang !== currentLang) || defaultLang;
 ---
 
-<a href={`${UrlToPathLang(url, otherLang)}`}>{otherLang}</a>
+<div class="block">
+  <Link href={`${UrlToPathLang(url, otherLang)}`}
+    >{otherLang}
+    <Icon
+      class="ml-1 inline"
+      size={13}
+      name="iconoir:language"
+      is:inline
+    /></Link
+  >
+</div>

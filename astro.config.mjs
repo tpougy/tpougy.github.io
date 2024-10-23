@@ -4,18 +4,21 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import svelte from "@astrojs/svelte";
+import { astroExpressiveCode } from "astro-expressive-code";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 
 export default defineConfig({
   site: "https://astro-nano-demo.vercel.app",
   integrations: [
+    astroExpressiveCode({
+      themes: ["dracula", "github-light"],
+      themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
+    }),
+    pluginLineNumbers(),
     mdx(),
     sitemap(),
     tailwind(),
     svelte(),
-    icon({
-      include: {
-        ph: ["hand-waving-bold"],
-      },
-    }),
+    icon({}),
   ],
 });

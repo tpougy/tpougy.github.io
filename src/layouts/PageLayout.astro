@@ -17,24 +17,12 @@ import { getLangFromUrl } from "../i18n/utils.ts";
 const url = Astro.url;
 const id = Astro.url.pathname;
 const lang = getLangFromUrl(url);
-let darkTheme = "light";
-
-if (typeof window !== "undefined") {
-  const userTheme = localStorage.getItem("theme");
-  darkTheme =
-    userTheme === "dark" ||
-    (userTheme === "system" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ? "dark"
-      : "light";
-}
 ---
 
 <!doctype html>
-<html lang={lang} data-theme={darkTheme == "dark" ? "dracula" : "github-light"}>
-  <head>
-    <Head title={`${title} | ${SITE.NAME}`} description={description} />
-  </head>
+<html lang={lang}>
+  <Head title={`${title} | ${SITE.NAME}`} description={description} />
+
   <body>
     <Header />
     <main>

@@ -17,8 +17,11 @@ const t = useTranslations(lang);
           {SITE.NAME}
         </div>
       </Link>
-      <LanguagePicker />
-      <nav class="flex gap-1 ml-auto">
+      <div class="ml-4 mt-0.5">
+        <LanguagePicker />
+      </div>
+
+      <nav class="ml-auto mt-0.5 flex gap-1">
         <Link href=`/${lang}/blog/`>
           {t("header.blog")}
         </Link>
