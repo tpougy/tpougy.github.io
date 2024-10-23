@@ -1,16 +1,12 @@
 ---
-import { UrlToPathLang } from "@i18n/utils";
+import { getLangFromUrl, UrlToPathLang } from "@i18n/utils";
 import { languages } from "../i18n/ui";
 
 const url = Astro.url;
+
+// TODO: corrigir abaixo
+const currentLang = getLangFromUrl(url);
+const otherLang = languages.filter(language != lang);
 ---
 
-<ul>
-  {
-    Object.entries(languages).map(([lang, label]) => (
-      <li>
-        <a href={`${UrlToPathLang(url, lang)}`}>{label}</a>
-      </li>
-    ))
-  }
-</ul>
+<a href={`${UrlToPathLang(url, otherLang)}`}>{otherLang}</a>
