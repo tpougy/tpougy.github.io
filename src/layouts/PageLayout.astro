@@ -17,13 +17,17 @@ import { getLangFromUrl } from "../i18n/utils.ts";
 const url = Astro.url;
 const id = Astro.url.pathname;
 const lang = getLangFromUrl(url);
-const userTheme = localStorage.getItem("theme");
-const darkTheme =
-  userTheme === "dark" ||
-  (userTheme === "system" &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ? "dark"
-    : "light";
+let darkTheme = "light";
+
+if (typeof window !== "undefined") {
+  const userTheme = localStorage.getItem("theme");
+  darkTheme =
+    userTheme === "dark" ||
+    (userTheme === "system" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ? "dark"
+      : "light";
+}
 ---
 
 <!doctype html>
