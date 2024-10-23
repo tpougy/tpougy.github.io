@@ -6,7 +6,7 @@ const url = Astro.url;
 
 // TODO: corrigir abaixo
 const currentLang = getLangFromUrl(url);
-const otherLang = Object.keys(languages).find((lang) => lang !== currentLang);
+const otherLang = Object.keys(languages).find((lang) => lang !== currentLang) || defaultLang;
 ---
 
 <a href={`${UrlToPathLang(url, otherLang)}`}>{otherLang}</a>
