@@ -6,6 +6,7 @@ import icon from "astro-icon";
 import svelte from "@astrojs/svelte";
 import { astroExpressiveCode } from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import pagefind from "astro-pagefind";
 
 export default defineConfig({
   site: "https://astro-nano-demo.vercel.app",
@@ -20,5 +21,13 @@ export default defineConfig({
     tailwind(),
     svelte(),
     icon({}),
+    pagefind(),
   ],
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ["/pagefind/pagefind.js?url"],
+      },
+    },
+  },
 });

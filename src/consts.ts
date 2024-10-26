@@ -21,12 +21,6 @@ export const BLOG: Metadata = {
   LANG: "en",
 };
 
-export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "My professional experience.",
-  LANG: "en",
-};
-
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION: "Some explanation about projects I've worked on.",

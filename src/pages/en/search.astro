@@ -1,0 +1,11 @@
+---
+import Container from "@components/Container.astro";
+import SearchField from "@components/Search/SearchField.svelte";
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout title={"Search"} description={"search here"}>
+  <Container>
+    <SearchField client:only="svelte" />
+  </Container>
+</PageLayout>

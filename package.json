@@ -3,9 +3,11 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "bun run build && bun run copy:pagefind:dev && bun astro dev",
     "dev:network": "astro dev --host",
-    "build": "astro check && astro build",
+    "build": "astro build && bun pagefind --site dist",
+    "build:pagefind": "bun pagefind --site dist",
+    "copy:pagefind:dev": "bun shx cp -r dist/pagefind public/",
     "preview": "astro preview",
     "preview:network": "astro preview --host",
     "astro": "astro",
@@ -27,15 +29,19 @@
     "@iconify-json/mdi": "^1.2.0",
     "@iconify-json/ph": "^1.2.0",
     "@tailwindcss/typography": "^0.5.15",
+    "@types/lodash": "^4.17.12",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "astro": "^4.15.9",
     "astro-expressive-code": "^0.37.1",
     "astro-icon": "^1.1.1",
+    "astro-pagefind": "^1.6.0",
     "clsx": "^2.1.1",
     "eslint": "^8.57.1",
     "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
+    "loadsh": "^0.0.4",
+    "lodash-es": "^4.17.21",
     "redaxios": "^0.5.1",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.2",
@@ -46,6 +52,7 @@
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-astro-organize-imports": "0.4.10",
-    "prettier-plugin-tailwindcss": "0.6.8"
+    "prettier-plugin-tailwindcss": "0.6.8",
+    "shx": "^0.3.4"
   }
 }
