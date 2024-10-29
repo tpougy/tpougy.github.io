@@ -1,7 +1,11 @@
 ---
+type Props = {
+  pagefindBody?: boolean;
+};
 
+const { pagefindBody: pagefindBody = false } = Astro.props;
 ---
 
-<div class="mx-auto max-w-screen-sm px-5">
+<div data-pagefind-body={pagefindBody} class="mx-auto max-w-screen-sm px-5">
   <slot />
 </div>

@@ -2,7 +2,7 @@
 title: "Blog Collection"
 description: "PT How to add posts to your blog."
 date: "Mar 21 2024"
-lang: "en"
+lang: "pt"
 ---
 
 PT The `blog` collections is found in `src/content/blog`.

@@ -2,25 +2,31 @@
 import BackToPrev from "@components/BackToPrev.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { getLangFromUrl } from "@i18n/utils";
+import { getLangFromFilePath, getLangFromUrl } from "@i18n/utils";
 import PageLayout from "@layouts/PageLayout.astro";
 import { readingTime } from "@lib/utils";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
+  const currentFilePath = import.meta.url;
+
+  const fileLang = getLangFromFilePath(currentFilePath);
+
   const pages = await getCollection("blog");
 
-  const paths = pages.map((page) => {
-    // Extrai o idioma e o slug a partir do caminho da coleção
-    const pathParts = page.id.split("/"); // Divide o caminho do arquivo
-    const lang = pathParts[0]; // Obtém o idioma da pasta (e.g., "pt" ou "en")
-    const slug = pathParts[1]; // Obtém o slug da pasta do post (e.g., "01-post-abc")
+  const paths = pages
+    .filter((page) => page.id.startsWith(`${fileLang}/`)) // Filtra apenas as entradas em inglês
+    .map((page) => {
+      const pathParts = page.id.split("/");
+      const lang = pathParts[0];
+      const slug = pathParts[1];
 
-    return {
-      params: { lang, slug }, // Passa o idioma e o slug como parâmetros
-      props: page,
-    };
-  });
+      return {
+        params: { lang, slug },
+        props: page,
+      };
+    });
+
   return paths;
 }
 
@@ -39,7 +45,7 @@ const { Content } = await page.render();
   title={post.data.title}
   description={post.data.description}
 >
-  <Container data-pagefind-body>
+  <Container pagefindBody={true}>
     <div class="animate">
       <BackToPrev href=`/${lang}/blog`> Back to blog </BackToPrev>
     </div>
@@ -54,6 +60,7 @@ const { Content } = await page.render();
         </div>
       </div>
       <div
+        data-pagefind-meta="title"
         class="animate font-serif text-2xl font-semibold text-black dark:text-white"
       >
         {post.data.title}

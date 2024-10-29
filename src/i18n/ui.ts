@@ -11,6 +11,8 @@ export const ui = {
     "header.blog": "blog",
     "header.projects": "projects",
 
+    "search.placeholder": "Search...",
+
     "comments.title": "Comments",
 
     "comments.section.loading": "Loading",
@@ -32,6 +34,8 @@ export const ui = {
   pt: {
     "header.blog": "blog",
     "header.projects": "projetos",
+
+    "search.placeholder": "Buscar...",
 
     "comments.title": "Comentários",
 

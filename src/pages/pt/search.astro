@@ -1,11 +1,14 @@
 ---
 import Container from "@components/Container.astro";
 import SearchField from "@components/Search/SearchField.svelte";
+import { getLangFromUrl } from "@i18n/utils";
 import PageLayout from "@layouts/PageLayout.astro";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<PageLayout title={"Search"} description={"search here"}>
+<PageLayout title={"Search"} description={"Search here"}>
   <Container>
-    <SearchField client:only="svelte" />
+    <SearchField client:only="svelte" lang={lang} />
   </Container>
 </PageLayout>

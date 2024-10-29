@@ -2,7 +2,7 @@
 title: "Getting started"
 description: "PT Hit the ground running."
 date: "Mar 22 2024"
-lang: "en"
+lang: "pt"
 ---
 
 PT The basic configuration of Nano is pretty simple.

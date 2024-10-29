@@ -2,6 +2,7 @@
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import { SITE } from "@consts";
+import { Icon } from "astro-icon/components";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import LanguagePicker from "./LanguagePicker.astro";
 
@@ -22,6 +23,11 @@ const t = useTranslations(lang);
       </div>
 
       <nav class="ml-auto mt-0.5 flex gap-1">
+        <div class="mr-6 mt-0.5">
+          <Link href=`/${lang}/search/`>
+            <Icon name="line-md:search" size={20} />
+          </Link>
+        </div>
         <Link href=`/${lang}/blog/`>
           {t("header.blog")}
         </Link>

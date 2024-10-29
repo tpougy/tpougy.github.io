@@ -26,6 +26,16 @@ export function getLangFromSlug(slug: string) {
   return defaultLang; // Retorna um idioma padrão se não for encontrado
 }
 
+export function getLangFromFilePath(path: string) {
+  // Encontra o primeiro idioma que está presente no caminho
+  const lang = Object.keys(languages).find((lang) =>
+    path.includes(`/${lang}/`),
+  );
+
+  // Retorna o idioma encontrado ou null se nenhum for encontrado
+  return lang || defaultLang;
+}
+
 export function getPureSlug(slug: string) {
   const pathParts = slug.split("/");
   const pure = pathParts[1];

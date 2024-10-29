@@ -9,7 +9,7 @@ repoURL: "https://github.com/markhorn-dev/astro-sphere"
 
 Astro Sphere Lighthouse Score
 
-PT Astro Sphere is a static, minimalist, lightweight, lightning fast portfolio and blog theme based on my personal website.
+EN Astro Sphere is a static, minimalist, lightweight, lightning fast portfolio and blog theme based on my personal website.
 
 It is primarily Astro, Tailwind and Typescript, with a very small amount of SolidJS for stateful components.
 
