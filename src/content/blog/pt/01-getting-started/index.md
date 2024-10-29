@@ -72,3 +72,9 @@ export const SOCIALS: Socials = [
 | :---- | :-- | :-------------------------------------- |
 | NAME  | Yes | Displayed in contact section as a link. |
 | HREF  | Yes | External url to social media profile.   |
+
+```bash withOutput showLineNumbers=false
+> pwd
+
+/usr/home/boba-tan/programming
+```

@@ -7,11 +7,13 @@ import svelte from "@astrojs/svelte";
 import { astroExpressiveCode } from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import pagefind from "astro-pagefind";
+import { pluginCodeOutput } from "@fujocoded/expressive-code-output";
 
 export default defineConfig({
   site: "https://astro-nano-demo.vercel.app",
   integrations: [
     astroExpressiveCode({
+      plugins: [pluginLineNumbers(), pluginCodeOutput()],
       themes: ["dracula", "github-light"],
       themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
     }),
@@ -20,7 +22,12 @@ export default defineConfig({
     sitemap(),
     tailwind(),
     svelte(),
-    icon({}),
+    icon({
+      include: {
+        lineMd: ["search"],
+        iconoir: ["language"],
+      },
+    }),
     pagefind(),
   ],
   vite: {

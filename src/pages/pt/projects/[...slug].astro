@@ -3,17 +3,21 @@ import BackToPrev from "@components/BackToPrev.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import Link from "@components/Link.astro";
-import { getLangFromUrl } from "@i18n/utils";
+import { getLangFromFilePath, getLangFromUrl } from "@i18n/utils";
 import PageLayout from "@layouts/PageLayout.astro";
 import { readingTime } from "@lib/utils";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
+  const currentFilePath = import.meta.url;
+
+  const fileLang = getLangFromFilePath(currentFilePath);
+
   const pages = await getCollection("projects");
 
   const paths = pages
-    .filter((page) => page.id.startsWith("pt/")) // Filtra apenas as entradas em inglês
-    .map((page) => {
+    .filter((page: { id: string }) => page.id.startsWith(`${fileLang}/`))
+    .map((page: { id: string }) => {
       const pathParts = page.id.split("/");
       const lang = pathParts[0];
       const slug = pathParts[1];
