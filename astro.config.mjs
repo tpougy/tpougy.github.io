@@ -10,7 +10,7 @@ import pagefind from "astro-pagefind";
 import { pluginCodeOutput } from "@fujocoded/expressive-code-output";
 
 export default defineConfig({
-  site: "https://astro-nano-demo.vercel.app",
+  site: "https://tpougy.blog",
   integrations: [
     astroExpressiveCode({
       plugins: [pluginLineNumbers(), pluginCodeOutput()],
