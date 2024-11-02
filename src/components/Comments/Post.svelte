@@ -63,7 +63,7 @@
       <label class="mb-2 block text-black dark:text-white" for="nickname">{t('comments.post.nickname')}</label>
       <input
         name="nickname"
-        class="w-full p-2 text-sm bg-gray-100 px-4 font-bold border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+        class="w-full p-2 text-sm bg-gray-100 px-4 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
         type="text"
         title={t('nickname')}
         bind:value={nickname}
@@ -73,9 +73,9 @@
       <label class="mb-2 block text-black dark:text-white" for="email">{t('comments.post.email')}</label>
       <input
         name="email"
-        class="w-full p-2 text-sm bg-gray-100 px-4 font-bold border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+        class="w-full p-2 text-sm bg-gray-100 px-4 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
         type="email"
-        title={t('email')}
+        title={t('comments.post.email')}
         bind:value={email}
       />
     </div>
@@ -85,7 +85,7 @@
     <label class="mb-2 block text-black dark:text-white" for="reply_content">{t('comments.post.reply_placeholder')}</label>
     <textarea
       name="reply_content"
-      class="w-full p-2 text-sm bg-gray-100 px-4 font-bold border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+      class="w-full p-2 text-sm bg-gray-100 px-4 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
       title={t('reply_placeholder')}
       bind:value={content}
     />

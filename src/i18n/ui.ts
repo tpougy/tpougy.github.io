@@ -53,6 +53,6 @@ export const ui = {
     "comments.post.nickname_is_required": "Apelido é requerido",
     "comments.post.post_comment": "Postar comentário",
     "comments.post.reply_placeholder": "Responder...",
-    "comments.post.sending": "enviando...",
+    "comments.post.sending": "Enviando...",
   },
 };

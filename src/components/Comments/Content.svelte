@@ -11,6 +11,11 @@
   const t = useTranslations(lang);
   const { showIndicator } = getContext('attrs');
 
+  // Reactive statement to sort replies by creation date (oldest first)
+  $: sortedReplies = comment.replies.data.slice().sort((a, b) => {
+    return new Date(a.createdAt) - new Date(b.createdAt);
+  });
+
 </script>
 
 <div
@@ -40,53 +45,55 @@
   {@html comment.parsedContent}
 </div>
 
-{#if comment.replies.data.length > 0}
-  {#each comment.replies.data as child (child.id)}
-    <svelte:self isChild={true} comment={child} />
+{#if sortedReplies.length > 0}
+  {#each sortedReplies as child (child.id)}
+    <svelte:self isChild={true} comment={child} lang={lang} />
   {/each}
 {/if}
 
-<div>
-  <button
-    class="group relative mt-2 rounded border border-black/15 pl-5 pr-1 pb-1 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
-    type="button"
-    on:click={() => (showReplyForm = !showReplyForm)}
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      class="absolute left-1 top-1/2 w-4 h-4 -translate-y-1/2 fill-none stroke-current stroke-2"
+{#if !isChild}
+  <div>
+    <button
+      class="group relative mt-2 rounded border border-black/15 pl-5 pr-1 pb-1 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+      type="button"
+      on:click={() => (showReplyForm = !showReplyForm)}
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="1"
-        class="fill-current text-white transform scale-100 transition-transform duration-300 ease-in origin-center group-hover:scale-0"
-      />
-      <path
-        d="M10 7l-3 3l3 3"
-        class="[stroke-dasharray:10] [stroke-dashoffset:10] transition-[stroke-dashoffset] duration-300 ease-in-out group-hover:[stroke-dashoffset:0]"
-      />
-      <path
-        d="M17 13v-1a2 2 0 0 0-2-2H7"
-        class="[stroke-dasharray:20] [stroke-dashoffset:20] transition-[stroke-dashoffset] duration-300 ease-in-out group-hover:[stroke-dashoffset:0] delay-150"
-      />
-    </svg>
-    <div class="font-serif text-sm font-bold">
-      {t('comments.content.reply_btn')}
-    </div>
-  </button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="absolute left-1 top-1/2 w-4 h-4 -translate-y-1/2 fill-none stroke-current stroke-2"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="1"
+          class="fill-current text-white transform scale-100 transition-transform duration-300 ease-in origin-center group-hover:scale-0"
+        />
+        <path
+          d="M10 7l-3 3l3 3"
+          class="[stroke-dasharray:10] [stroke-dashoffset:10] transition-[stroke-dashoffset] duration-300 ease-in-out group-hover:[stroke-dashoffset:0]"
+        />
+        <path
+          d="M17 13v-1a2 2 0 0 0-2-2H7"
+          class="[stroke-dasharray:20] [stroke-dashoffset:20] transition-[stroke-dashoffset] duration-300 ease-in-out group-hover:[stroke-dashoffset:0] delay-150"
+        />
+      </svg>
+      <div class="font-serif text-sm font-bold">
+        <!-- Reply -->
+        {t('comments.content.reply_btn')}
+      </div>
+    </button>
 
-  {#if showReplyForm}
-    <div class="mt-4 pl-4 border-l-2 border-gray-200">
-      <Post
-        parentId={comment.id}
-        onSuccess={() => (showReplyForm = false)}
-        lang={lang}
-      />
-    </div>
-  {/if}
-</div>
-
+    {#if showReplyForm}
+      <div class="mt-4 pl-4 border-l-2 border-gray-200">
+        <Post
+          parentId={comment.id}
+          onSuccess={() => (showReplyForm = false)}
+          lang={lang}
+        />
+      </div>
+    {/if}
+  </div>
+{/if}
 
 </div>

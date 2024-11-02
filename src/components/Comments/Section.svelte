@@ -85,7 +85,7 @@
 
 <div class:dark={theme === 'dark'}>
   {#if message}
-    <div class="p-2 mb-4 bg-blue-500 text-white">
+    <div class="p-2 mb-4 text-center rounded border border-black/15 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-whiteW">
       {message}
     </div>
   {/if}
@@ -101,7 +101,7 @@
       </div>
     {:else}
       {#each commentsResult.data as comment (comment.id)}
-        <Content {comment} firstFloor={true} lang={attrs.lang} />
+        <Content {comment} lang={attrs.lang} />
       {/each}
       {#if commentsResult.pageCount > 1}
         <div>
