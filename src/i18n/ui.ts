@@ -13,6 +13,8 @@ export const ui = {
 
     "search.placeholder": "Search...",
 
+    "content.reading_time": "min. read",
+
     "comments.title": "Comments",
 
     "comments.section.loading": "Loading",
@@ -36,6 +38,8 @@ export const ui = {
     "header.projects": "projetos",
 
     "search.placeholder": "Buscar...",
+
+    "content.reading_time": "min. de leitura",
 
     "comments.title": "Comentários",
 

@@ -1,3 +1,4 @@
+import { defaultLang, type languages, ui } from "@i18n/ui";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -5,19 +6,27 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDate(date: Date) {
-  return Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-  }).format(date);
-}
+// export function formatDate(date: Date) {
+//   return Intl.DateTimeFormat("en-US", {
+//     month: "short",
+//     day: "2-digit",
+//     year: "numeric",
+//   }).format(date);
+// }
 
-export function readingTime(html: string) {
+export function readingTime(html: string, lang: keyof typeof languages) {
+  const msg =
+    lang == defaultLang
+      ? ui.pt["content.reading_time"]
+      : ui.en["content.reading_time"];
+
   const textOnly = html.replace(/<[^>]+>/g, "");
+
   const wordCount = textOnly.split(/\s+/).length;
+
   const readingTimeMinutes = (wordCount / 200 + 1).toFixed();
-  return `${readingTimeMinutes} min read`;
+
+  return `${readingTimeMinutes} ${msg}`;
 }
 
 export function dateRange(startDate: Date, endDate?: Date | string): string {
