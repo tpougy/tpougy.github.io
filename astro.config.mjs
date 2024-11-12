@@ -8,6 +8,11 @@ import { astroExpressiveCode } from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import pagefind from "astro-pagefind";
 import { pluginCodeOutput } from "@fujocoded/expressive-code-output";
+import react from "@astrojs/react";
+import markdoc from "@astrojs/markdoc";
+import keystatic from "@keystatic/astro";
+
+const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
   site: "https://tpougy.blog",
@@ -28,7 +33,10 @@ export default defineConfig({
         iconoir: ["language"],
       },
     }),
+    react(),
+    markdoc(),
     pagefind(),
+    ...(isDev ? [keystatic()] : []), // uses the integration conditionally
   ],
   vite: {
     build: {
@@ -37,4 +45,5 @@ export default defineConfig({
       },
     },
   },
+  output: isDev ? "hybrid" : "static", // only set hybrid rendering for dev mode
 });

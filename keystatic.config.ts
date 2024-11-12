@@ -27,7 +27,7 @@ export default config({
           label: "Draft",
           description: "Check will not publish the content",
         }),
-        content: fields.markdoc({ label: "Content", extension: "md" }), // Para conteúdo Markdown
+        content: fields.mdx({ label: "Content", extension: "mdx" }), // Para conteúdo Markdown
       },
     }),
     blog_pt: collection({
@@ -51,7 +51,7 @@ export default config({
           label: "Rascunho",
           description: "Marque para não publicar o conteúdo",
         }),
-        content: fields.markdoc({ label: "Conteúdo", extension: "md" }),
+        content: fields.mdx({ label: "Conteúdo", extension: "mdx" }),
       },
     }),
   },
