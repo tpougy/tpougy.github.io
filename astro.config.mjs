@@ -29,8 +29,8 @@ export default defineConfig({
     svelte(),
     icon({
       include: {
-        lineMd: ["search"],
-        iconoir: ["language"],
+        lineMd: ["search", "github"],
+        iconoir: ["language", "github"],
       },
     }),
     react(),

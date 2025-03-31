@@ -20,7 +20,7 @@ export default config({
         date: fields.date({ label: "Date" }),
         lang: fields.select({
           label: "Language",
-          options: [{ label: "English", value: "en" }],
+          options: [{ label: "EN", value: "en" }],
           defaultValue: "en",
         }),
         draft: fields.checkbox({
@@ -44,7 +44,7 @@ export default config({
         date: fields.date({ label: "Data" }),
         lang: fields.select({
           label: "Língua",
-          options: [{ label: "Portuguese", value: "pt" }],
+          options: [{ label: "PT-BR", value: "pt" }],
           defaultValue: "pt",
         }),
         draft: fields.checkbox({
