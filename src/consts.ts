@@ -3,6 +3,7 @@ import type { Site, Metadata, Socials } from "@types";
 export const SITE: Site = {
   NAME: "tpougy",
   EMAIL: "thomazpougy@gmail.com",
+  REPO_URL: "https://github.com/tpougy/tpougy.github.io",
   NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_WORKS_ON_HOMEPAGE: 1,
   NUM_PROJECTS_ON_HOMEPAGE: 1,
@@ -10,20 +11,19 @@ export const SITE: Site = {
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION:
-    "Tpougy blog is a place to dive deep on programming, tecnology and science.",
+  DESCRIPTION: "A deep dive on tech stuff.",
   LANG: "en",
 };
 
 export const BLOG: Metadata = {
   TITLE: "Blog",
-  DESCRIPTION: "Articles on tech and programming.",
+  DESCRIPTION: "A deep dive on tech stuff.",
   LANG: "en",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
-  DESCRIPTION: "Some explanation about projects I've worked on.",
+  DESCRIPTION: "",
   LANG: "en",
 };
 

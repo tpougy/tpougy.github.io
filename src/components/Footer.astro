@@ -1,9 +1,11 @@
 ---
 import BackToTop from "@components/BackToTop.astro";
 import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
 import { SITE } from "@consts";
+import { Icon } from "astro-icon/components";
 import Comments from "./CommentSection.astro";
-import LanguagePicker from "./LanguagePicker.astro";
+// import LanguagePicker from "./LanguagePicker.astro";
 
 type Props = {
   enableComments: boolean;
@@ -37,7 +39,11 @@ const { enableComments = false, pageId, pageUrl, pageTitle } = Astro.props;
       <div>
         &copy; 2024 {`|`}
         {SITE.NAME}
+        <Link href="https://github.com/tpougy/tpougy.github.io">
+          <Icon class="ml-1 inline" size={22} name="line-md:github" is:inline />
+        </Link>
       </div>
+
       <div class="flex flex-wrap items-center gap-1">
         <button
           id="light-theme-button"
@@ -110,7 +116,8 @@ const { enableComments = false, pageId, pageUrl, pageTitle } = Astro.props;
           </svg>
         </button>
       </div>
-      <LanguagePicker />
+      <!-- Do not show language picker in footer -->
+      <!-- <LanguagePicker /> -->
     </div>
   </Container>
 </footer>
