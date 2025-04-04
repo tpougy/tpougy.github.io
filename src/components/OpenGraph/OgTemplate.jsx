@@ -5,22 +5,24 @@ import React from "react"; // Necessário para JSX
  * @typedef {object} OgData
  * @property {string} title
  * @property {Date} date
- * @property {'en' | 'pt'} lang
- * @property {string} author
+ * @property {keyof import('../../i18n/ui').languages} lang // Use keys from ui.ts
+ * // author prop remains removed
  */
 
 /**
  * @param {OgData} props
  */
 const OgTemplate = (props) => {
+  // Remove lang and author from destructuring
   const {
     title = "Default Title",
     date = new Date(),
-    lang = "en",
-    author = "Seu Nome/Blog",
+    lang = "en", // Re-add lang prop with default
   } = props;
+  const author = "tpougy.blog"; // Keep author hardcoded
 
   // Formata a data com base no idioma
+  // Use the lang prop for date formatting
   const formattedDate = date.toLocaleDateString(
     lang === "pt" ? "pt-BR" : "en-US",
     {
@@ -33,8 +35,8 @@ const OgTemplate = (props) => {
   return (
     <div
       style={{
-        height: "630px",
-        width: "1200px",
+        height: "100%", // Match tutorial structure
+        width: "100%", // Match tutorial structure
         display: "flex",
         backgroundColor: "#18181B", // dark: zinc-900
         fontFamily: "'Poppins', sans-serif", // Fonte base
@@ -64,16 +66,16 @@ const OgTemplate = (props) => {
             boxShadow: "5px 5px 0px #1F2937", // dark: gray-800
             width: "100%",
             height: "100%",
-            padding: "24px",
+            padding: "10px", // Match tutorial padding
           }}
         >
           {/* Seção do Título */}
           <div
             style={{
-              fontSize: "48px",
-              fontWeight: 900,
-              lineHeight: 1.25,
-              padding: "16px 0 40px 0",
+              fontSize: "32px", // Match tutorial font size
+              fontWeight: 900, // Match tutorial font weight
+              lineHeight: "3rem", // Match tutorial line height
+              padding: "10px 0 50px 0", // Match tutorial padding
               color: "#F9FAFB", // dark: gray-50 (white)
               flex: 1,
               display: "flex",
@@ -86,8 +88,8 @@ const OgTemplate = (props) => {
           {/* Seção do Rodapé */}
           <div
             style={{
-              fontSize: "24px",
-              fontWeight: 700, // Poppins Bold
+              fontSize: "16px", // Match tutorial font size
+              fontWeight: 900, // Match tutorial font weight (use Poppins Black if available, or Bold 700 is ok)
               color: "#F9FAFB", // dark: gray-50 (white)
               display: "flex",
               flexDirection: "row",
