@@ -11,7 +11,7 @@ import { pluginCodeOutput } from "@fujocoded/expressive-code-output";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
-// Remove a importação do plugin svelte-h2j
+import { vitePluginSvelteH2J } from "@ethercorps/svelte-h2j/vite"; // Re-importa o plugin
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -40,7 +40,9 @@ export default defineConfig({
     ...(isDev ? [keystatic()] : []), // uses the integration conditionally
   ],
   vite: {
-    // A seção 'plugins' foi removida pois svelte-h2j era o único plugin.
+    plugins: [
+      vitePluginSvelteH2J(), // Re-adiciona o plugin svelte-h2j
+    ],
     build: {
       rollupOptions: {
         external: ["/pagefind/pagefind.js?url"],

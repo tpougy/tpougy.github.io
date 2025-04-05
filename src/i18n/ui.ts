@@ -3,6 +3,11 @@ export const languages = {
   pt: "Português",
 };
 
+export const languages_locale = {
+  en: "en-US",
+  pt: "pt-BR",
+};
+
 export const defaultLang = "pt";
 export const showDefaultLang = true;
 

@@ -1,13 +1,15 @@
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import { generateOgImage } from "../../../lib/og";
-import { languages } from "../../../i18n/ui"; // Import languages
+import { languages } from "../../../i18n/ui";
+import { SITE } from "../../../consts"; // Import SITE for author name
 
 // Define a interface para as props que a rota receberá de getStaticPaths
 interface OgProps {
   title: string;
   date: Date;
-  lang: keyof typeof languages; // Use imported type for lang
+  lang: keyof typeof languages;
+  author: string;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -27,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         // Usa o campo 'date' existente no schema da coleção
         date: post.data.date, // Usa o campo 'date' definido no schema
         lang: "pt", // Pass lang prop, ensuring it's the correct type key
-        // author remains removed
+        author: SITE.NAME, // Pass SITE.NAME as author prop
       },
     };
   });
@@ -36,10 +38,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // A função GET que será chamada para cada rota estática gerada
 export const GET: APIRoute<OgProps> = async ({ props }) => {
   // Receive title, date, and lang from props
-  const { title, date, lang } = props;
+  // Receive author prop
+  const { title, date, lang, author } = props;
 
   // Pass lang to generateOgImage
-  const responseBuffer = await generateOgImage(title, date, lang);
+  // Pass author to generateOgImage
+  const responseBuffer = await generateOgImage(title, date, lang, author);
 
   // Retorna a resposta com o buffer da imagem
   return new Response(responseBuffer, {

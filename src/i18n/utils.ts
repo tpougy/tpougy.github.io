@@ -1,4 +1,4 @@
-import { ui, defaultLang, languages } from "./ui";
+import { ui, defaultLang, languages, languages_locale } from "./ui";
 
 export function getLangFromUrl(url: URL): keyof typeof languages {
   const pathParts = url.pathname.split("/");
@@ -54,4 +54,12 @@ export function UrlToPathLang(url: URL, lang: string) {
 
   // Reconstrua o caminho e retorne
   return pathParts.join("/");
+}
+
+export function format_locale_date(date: Date, lang: keyof typeof languages) {
+  return date.toLocaleDateString(languages_locale[lang], {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
