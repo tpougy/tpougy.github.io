@@ -17,7 +17,7 @@
 
 <a
   href={data.url}
-  class="group relative flex flex-nowrap rounded-lg border border-black/15 px-4 py-3 pr-10 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+  class="group relative flex flex-nowrap border border-black px-4 py-3 pr-10 hover:bg-black hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-black"
 >
   <div class="flex flex-1 flex-col truncate">
     <div class="font-serif font-semibold">{title}</div>
@@ -35,11 +35,10 @@
       y1="12"
       x2="19"
       y2="12"
-      class="translate-x-3 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100"
+      class="group-hover:scale-x-100"
     />
     <polyline
-      points="12 5 19 12 12 19" 
-      class="-translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0"
+      points="12 5 19 12 12 19"
     />
   </svg>
 </a>

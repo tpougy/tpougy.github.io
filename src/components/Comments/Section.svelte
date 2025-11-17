@@ -85,7 +85,7 @@
 
 <div class:dark={theme === 'dark'}>
   {#if message}
-    <div class="p-2 mb-4 text-center rounded border border-black/15 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-whiteW">
+    <div class="p-2 mb-4 text-center border border-black hover:bg-black hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-black">
       {message}
     </div>
   {/if}

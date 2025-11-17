@@ -31,7 +31,7 @@
   </div>
 
   {#if comment.moderatorId}
-    <div class="mr-2 dark:bg-gray-500 bg-gray-200 text-xs py-0.5 px-1 rounded dark:text-gray-100">
+    <div class="mr-2 dark:bg-gray-500 bg-gray-200 text-xs py-0.5 px-1 dark:text-gray-100">
       <span>{t('comments.content.mod_badge')}</span>
     </div>
   {/if}
@@ -54,7 +54,7 @@
 {#if !isChild}
   <div>
     <button
-      class="group relative mt-2 rounded border border-black/15 pl-5 pr-1 pb-1 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+      class="group relative mt-2 border border-black pl-5 pr-1 pb-1 hover:bg-black hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-black"
       type="button"
       on:click={() => (showReplyForm = !showReplyForm)}
     >
@@ -63,19 +63,11 @@
         viewBox="0 0 24 24"
         class="absolute left-1 top-1/2 w-4 h-4 -translate-y-1/2 fill-none stroke-current stroke-2"
       >
-        <circle
-          cx="12"
-          cy="12"
-          r="1"
-          class="fill-current text-white transform scale-100 transition-transform duration-300 ease-in origin-center group-hover:scale-0"
-        />
         <path
           d="M10 7l-3 3l3 3"
-          class="[stroke-dasharray:10] [stroke-dashoffset:10] transition-[stroke-dashoffset] duration-300 ease-in-out group-hover:[stroke-dashoffset:0]"
         />
         <path
           d="M17 13v-1a2 2 0 0 0-2-2H7"
-          class="[stroke-dasharray:20] [stroke-dashoffset:20] transition-[stroke-dashoffset] duration-300 ease-in-out group-hover:[stroke-dashoffset:0] delay-150"
         />
       </svg>
       <div class="font-serif text-sm font-bold">

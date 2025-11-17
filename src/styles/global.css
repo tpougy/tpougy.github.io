@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -21,8 +21,8 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-zinc-100 dark:bg-zinc-900;
-  @apply text-black/50 dark:text-white/75;
+  @apply bg-[#F9F3F3] dark:bg-[#060C0C];
+  @apply text-black/80 dark:text-white/80;
 }
 
 h1,
@@ -36,8 +36,8 @@ h6 {
 
 header {
   @apply fixed left-0 right-0 top-0 z-50 py-5;
-  @apply bg-zinc-100/75 dark:bg-zinc-950/25;
-  @apply saturate-200 backdrop-blur-sm;
+  @apply bg-[#F9F3F3] dark:bg-[#060C0C];
+  @apply border-b border-black dark:border-white;
 }
 
 main {
@@ -55,28 +55,26 @@ article {
 }
 
 blockquote {
-  @apply my-4 bg-gray-100 px-4 py-2 dark:bg-gray-900;
+  @apply my-4 border-l-2 border-black px-4 py-2 dark:border-white;
 }
 
 @layer utilities {
   article a {
     @apply font-sans text-current underline underline-offset-2;
-    @apply decoration-black/15 dark:decoration-white/30;
-    @apply transition-colors duration-300 ease-in-out;
+    @apply decoration-black dark:decoration-white;
   }
   article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/25 dark:decoration-white/50;
+    @apply no-underline;
   }
 }
 
 .animate {
-  @apply translate-y-3 opacity-0;
-  @apply transition-all duration-700 ease-out;
+  @apply opacity-0;
+  @apply transition-opacity duration-150 ease-linear;
 }
 
 .animate.show {
-  @apply translate-y-0 opacity-100;
+  @apply opacity-100;
 }
 
 html #back-to-top {

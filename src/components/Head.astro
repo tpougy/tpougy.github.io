@@ -120,10 +120,23 @@ const isGeneratedOgImage =
   function animate() {
     const animateElements = document.querySelectorAll(".animate");
 
-    animateElements.forEach((element, index) => {
+    // Separa articles dos outros elementos
+    const articles = Array.from(animateElements).filter(el => el.tagName === 'ARTICLE');
+    const otherElements = Array.from(animateElements).filter(el => el.tagName !== 'ARTICLE');
+
+    // Anima elementos do header com delay escalonado
+    otherElements.forEach((element, index) => {
       setTimeout(() => {
         element.classList.add("show");
       }, index * 150);
+    });
+
+    // Anima articles com delay fixo após os elementos do header
+    const headerDelay = otherElements.length * 150;
+    articles.forEach((article) => {
+      setTimeout(() => {
+        article.classList.add("show");
+      }, headerDelay + 150);
     });
   }
 

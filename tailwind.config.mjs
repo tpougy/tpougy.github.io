@@ -7,8 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
-        serif: ["DM Serif Display", ...defaultTheme.fontFamily.serif],
+        sans: ["JetBrains Mono", "IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+        serif: ["JetBrains Mono", "IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+        mono: ["JetBrains Mono", "IBM Plex Mono", ...defaultTheme.fontFamily.mono],
       },
     },
   },

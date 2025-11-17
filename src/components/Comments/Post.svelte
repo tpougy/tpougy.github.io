@@ -63,7 +63,7 @@
       <label class="mb-2 block text-black dark:text-white" for="nickname">{t('comments.post.nickname')}</label>
       <input
         name="nickname"
-        class="w-full p-2 text-sm bg-gray-100 px-4 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+        class="w-full p-2 text-sm bg-white px-4 border border-black hover:bg-black hover:text-white dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black"
         type="text"
         title={t('nickname')}
         bind:value={nickname}
@@ -73,7 +73,7 @@
       <label class="mb-2 block text-black dark:text-white" for="email">{t('comments.post.email')}</label>
       <input
         name="email"
-        class="w-full p-2 text-sm bg-gray-100 px-4 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+        class="w-full p-2 text-sm bg-white px-4 border border-black hover:bg-black hover:text-white dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black"
         type="email"
         title={t('comments.post.email')}
         bind:value={email}
@@ -85,7 +85,7 @@
     <label class="mb-2 block text-black dark:text-white" for="reply_content">{t('comments.post.reply_placeholder')}</label>
     <textarea
       name="reply_content"
-      class="w-full p-2 text-sm bg-gray-100 px-4 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+      class="w-full p-2 text-sm bg-white px-4 border border-black hover:bg-black hover:text-white dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black"
       title={t('reply_placeholder')}
       bind:value={content}
     />
@@ -93,7 +93,7 @@
 
   <div class="px-1">
     <button
-      class="group relative flex w-fit flex-nowrap rounded border border-black/15 py-1.5 pl-8 pr-3 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+      class="group relative flex w-fit flex-nowrap border border-black py-1.5 pl-8 pr-3 hover:bg-black hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-black"
       class:cusdis-disabled={loading}
       on:click={addComment}
     >
@@ -107,10 +107,9 @@
         <path
           d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
         />
-        <!-- Checkmark com Animação -->
+        <!-- Checkmark -->
         <polyline
           points="7 11 10 14 17 8"
-          class="[stroke-dasharray:40] [stroke-dashoffset:40] transition-[stroke-dashoffset] duration-300 ease-in-out group-hover:[stroke-dashoffset:0]"
         />
       </svg>
       <!-- Texto do Botão -->

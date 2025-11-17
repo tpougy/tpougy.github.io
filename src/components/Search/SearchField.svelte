@@ -46,7 +46,7 @@
     type="text"
     bind:value={query}
     placeholder={t("search.placeholder")}
-    class="w-full p-4 text-sm bg-gray-100 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+    class="w-full p-4 text-sm bg-white border border-black hover:bg-black hover:text-white dark:bg-black dark:border-white dark:hover:bg-white dark:hover:text-black"
   />
 
   <div class="space-y-4">
