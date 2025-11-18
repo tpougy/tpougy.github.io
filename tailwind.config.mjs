@@ -7,9 +7,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["JetBrains Mono", "IBM Plex Mono", ...defaultTheme.fontFamily.mono],
-        serif: ["JetBrains Mono", "IBM Plex Mono", ...defaultTheme.fontFamily.mono],
-        mono: ["JetBrains Mono", "IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+        sans: [
+          "Inconsolata",
+          "JetBrains Mono",
+          "IBM Plex Mono",
+          ...defaultTheme.fontFamily.mono,
+        ],
+        serif: [
+          "Inconsolata",
+          "JetBrains Mono",
+          "IBM Plex Mono",
+          ...defaultTheme.fontFamily.mono,
+        ],
+        mono: [
+          "JetBrains Mono",
+          "IBM Plex Mono",
+          ...defaultTheme.fontFamily.mono,
+        ],
       },
     },
   },
