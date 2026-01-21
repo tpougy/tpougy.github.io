@@ -1,21 +1,22 @@
 <script>
-  import { onMount, setContext } from 'svelte';
+  import { setContext } from 'svelte';
   import axios from 'redaxios';
   import Content from './Content.svelte';
   import Post from './Post.svelte';
   import { useTranslations } from '../../i18n/utils.ts';
 
-  export let attrs;
-  export let commentsResult = { data: [], pageCount: 0 };
+  let { attrs, commentsResult = { data: [], pageCount: 0 } } = $props();
 
+  // svelte-ignore state_referenced_locally
   const t = useTranslations(attrs.lang);
 
-  let page = 1;
-  let loadingComments = true;
-  let message = '';
-  let error;
-  let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  let page = $state(1);
+  let loadingComments = $state(true);
+  let message = $state('');
+  let error = $state(undefined);
+  let theme = $state(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 
+  // svelte-ignore state_referenced_locally
   const api = axios.create({
     baseURL: attrs.host || 'https://cusdis.com',
   });
@@ -24,9 +25,13 @@
     message = msg;
   }
 
-  $: document.documentElement.style.setProperty('color-scheme', theme);
+  // Efeito para atualizar color-scheme quando theme muda
+  $effect(() => {
+    document.documentElement.style.setProperty('color-scheme', theme);
+  });
 
-  onMount(() => {
+  // Efeito para event listener com cleanup
+  $effect(() => {
     function onMessage(e) {
       try {
         const msg = JSON.parse(e.data);
@@ -45,6 +50,7 @@
   });
 
   setContext('api', api);
+  // svelte-ignore state_referenced_locally
   setContext('attrs', attrs);
   setContext('refresh', getComments);
   setContext('setMessage', setMessage);
@@ -75,10 +81,10 @@
     getComments(p);
   }
 
-  onMount(() => {
+  // Carrega comentários na inicialização
+  $effect(() => {
     getComments();
   });
-
 </script>
 
 {#if !error}
@@ -92,7 +98,7 @@
 
   <Post lang={attrs.lang} />
 
-  <div class="my-8" />
+  <div class="my-8"></div>
 
   <div class="mt-4 px-1">
     {#if loadingComments}
@@ -109,14 +115,14 @@
             <button
               class="px-2 py-1 text-sm mr-2"
               class:underline={page === index + 1}
-              on:click={() => onClickPage(index + 1)}>{index + 1}</button>
+              onclick={() => onClickPage(index + 1)}>{index + 1}</button>
           {/each}
         </div>
       {/if}
     {/if}
   </div>
 
-  <div class="my-4" />
+  <div class="my-4"></div>
 
   <div class="text-center text-black/50 dark:text-gray-100 text-xs">
     <a class="underline" href="https://cusdis.com">{t('comments.section.powered_by')}</a>

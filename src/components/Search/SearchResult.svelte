@@ -1,17 +1,18 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  let { result }: { result: any } = $props();
 
-  export let result: any;
+  let data: any = $state({});
+  let title = $state('');
+  let excerpt = $state('');
 
-  let data: any = {};
-  let title = '';
-  let excerpt = '';
-
-  onMount(async () => {
-    data = await result.data();
-    console.log(data, data.meta.title, data.excerpt);
-    title = data.meta.title || data.url;
-    excerpt = data.excerpt;
+  $effect(() => {
+    const loadData = async () => {
+      data = await result.data();
+      console.log(data, data.meta.title, data.excerpt);
+      title = data.meta.title || data.url;
+      excerpt = data.excerpt;
+    };
+    loadData();
   });
 </script>
 

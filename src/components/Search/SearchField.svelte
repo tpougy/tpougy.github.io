@@ -1,33 +1,34 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { debounce } from "lodash-es";
   import SearchResult from "./SearchResult.svelte";
   import { useTranslations } from '../../i18n/utils.ts';
-  import {languages} from '../../i18n/ui.ts';
+  import { languages } from '../../i18n/ui.ts';
 
-  export let lang: keyof typeof languages;
+  let { lang }: { lang: keyof typeof languages } = $props();
+  // svelte-ignore state_referenced_locally
   const t = useTranslations(lang);
 
-  let query = "";
-  let results: any[] = [];
-  let pagefind: any;
-
-  
+  let query = $state("");
+  let results: any[] = $state([]);
+  let pagefind: any = $state(null);
 
   // Inicializa o Pagefind quando o componente é montado
-  onMount(async () => {
-    try {
-      pagefind = await import("/pagefind/pagefind.js?url");
-      await pagefind.init();
-    } catch (error) {
-      console.error("Falha ao carregar o Pagefind:", error);
-    }
+  $effect(() => {
+    const initPagefind = async () => {
+      try {
+        pagefind = await import("/pagefind/pagefind.js?url");
+        await pagefind.init();
+      } catch (error) {
+        console.error("Falha ao carregar o Pagefind:", error);
+      }
+    };
+    initPagefind();
   });
 
   // Executa a busca com debounce
-  const performSearch = debounce(async () => {
-    if (query.trim().length > 0 && pagefind) {
-      const searchResponse = await pagefind.debouncedSearch(query, {}, 100);
+  const performSearch = debounce(async (searchQuery: string) => {
+    if (searchQuery.trim().length > 0 && pagefind) {
+      const searchResponse = await pagefind.debouncedSearch(searchQuery, {}, 100);
       results = searchResponse?.results || [];
     } else {
       results = [];
@@ -35,10 +36,9 @@
   }, 100);
 
   // Observa as mudanças na consulta
-  $: if (query !== undefined) {
-    performSearch();
-  }
-
+  $effect(() => {
+    performSearch(query);
+  });
 </script>
 
 <div class="search-container space-y-4">

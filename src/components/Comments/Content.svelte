@@ -2,20 +2,23 @@
   import { getContext } from 'svelte';
   import { useTranslations } from "../../i18n/utils.ts";
   import Post from './Post.svelte';
+  import Self from './Content.svelte';
 
-  export let lang;
-  export let comment;
-  export let showReplyForm = false;
-  export let isChild = false;
-  
+  let { lang, comment, showReplyForm = false, isChild = false } = $props();
+
+  // svelte-ignore state_referenced_locally
+  let localShowReplyForm = $state(showReplyForm);
+
+  // svelte-ignore state_referenced_locally
   const t = useTranslations(lang);
   const { showIndicator } = getContext('attrs');
 
-  // Reactive statement to sort replies by creation date (oldest first)
-  $: sortedReplies = comment.replies.data.slice().sort((a, b) => {
-    return new Date(a.createdAt) - new Date(b.createdAt);
-  });
-
+  // Valor derivado para ordenar replies por data de criação (mais antigos primeiro)
+  let sortedReplies = $derived(
+    comment.replies.data.slice().sort((a, b) => {
+      return new Date(a.createdAt) - new Date(b.createdAt);
+    })
+  );
 </script>
 
 <div
@@ -47,7 +50,7 @@
 
 {#if sortedReplies.length > 0}
   {#each sortedReplies as child (child.id)}
-    <svelte:self isChild={true} comment={child} lang={lang} />
+    <Self isChild={true} comment={child} lang={lang} />
   {/each}
 {/if}
 
@@ -56,7 +59,7 @@
     <button
       class="group relative mt-2 rounded border border-black/15 pl-5 pr-1 pb-1 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
       type="button"
-      on:click={() => (showReplyForm = !showReplyForm)}
+      onclick={() => (localShowReplyForm = !localShowReplyForm)}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -84,11 +87,11 @@
       </div>
     </button>
 
-    {#if showReplyForm}
+    {#if localShowReplyForm}
       <div class="mt-4 pl-4 border-l-2 border-gray-200">
         <Post
           parentId={comment.id}
-          onSuccess={() => (showReplyForm = false)}
+          onSuccess={() => (localShowReplyForm = false)}
           lang={lang}
         />
       </div>

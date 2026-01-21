@@ -2,15 +2,14 @@
   import { getContext } from 'svelte';
   import { useTranslations } from '../../i18n/utils.ts';
 
-  export let lang;
-  export let parentId;
-  export let onSuccess;
+  let { lang, parentId, onSuccess } = $props();
 
-  let content = '';
-  let nickname = '';
-  let email = '';
-  let loading = false;
+  let content = $state('');
+  let nickname = $state('');
+  let email = $state('');
+  let loading = $state(false);
 
+  // svelte-ignore state_referenced_locally
   const t = useTranslations(lang);
   const api = getContext('api');
   const setMessage = getContext('setMessage');
@@ -88,14 +87,14 @@
       class="w-full p-2 text-sm bg-gray-100 px-4 border border-black/15 rounded transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:bg-transparent dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
       title={t('reply_placeholder')}
       bind:value={content}
-    />
+    ></textarea>
   </div>
 
   <div class="px-1">
     <button
       class="group relative flex w-fit flex-nowrap rounded border border-black/15 py-1.5 pl-8 pr-3 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
       class:cusdis-disabled={loading}
-      on:click={addComment}
+      onclick={addComment}
     >
       <!-- Ícone de Comentário com Checkmark -->
       <svg
